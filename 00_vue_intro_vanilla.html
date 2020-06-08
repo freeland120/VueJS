@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla</title>
+</head>
+<body>
+    <input type="text" id="keyword" onkeydown="typeKeyword()">
+    <div id="content"></div>
+    <script>
+        function typeKeyword(){
+            const keyword = document.querySelector('#keyword').value;
+            document.querySelector('#content').innerHTML = keyword;
+        }
+    </script>
+</body>
+</html>
