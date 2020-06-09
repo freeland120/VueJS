@@ -192,7 +192,7 @@
 
 ### 1.forEach
 
-- 배열 요소를 돌아가면서 한번씩 콜백함수를 실행한다.
+- 배열 요소를 돌아가면서 한번씩 콜백함수를 실행한다. (리턴값이 없다.)
 
 ```javascript
 function myFunction(value, index, array) {
@@ -210,7 +210,7 @@ numbers.forEach(myFunction);
 
 ### 2.map
 
-- 콜백함수에 의해 만들어진 새로운 배열을 반환한다.
+- 콜백함수에 의해 만들어진 새로운 배열을 반환한다.(리턴값이 있다.)
 
 ```javascript
 function myFunction(value, index, array) {
