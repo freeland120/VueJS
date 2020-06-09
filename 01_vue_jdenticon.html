@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jdenticon 실습해보기!🐋</title>
+  </head>
+  <body>
+    <div>
+      <h1>✅YDG_Identicon 생성기~✅</h1>
+      <div id="app">
+        <div id="input_output">
+          <div>
+            아무거나 입력해보세요: <input v-model="AnythingInput" type="text" />
+          </div>
+          <div>
+            <b>결과값</b>
+            <div v-html="Identicon27"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.rawgit.com/dmester/jdenticon/5bbdf8cb/dist/jdenticon.min.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          AnythingInput: "",
+        },
+        computed: {
+          Identicon27() {
+            return jdenticon.toSvg(this.AnythingInput, 500);
+          },
+
+          /* identicon3: function () {
+            return jdenticon.toSvg(this.textInput, 400); */
+        },
+      });
+    </script>
+  </body>
+</html>

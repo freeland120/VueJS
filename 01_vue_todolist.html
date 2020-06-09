@@ -13,6 +13,12 @@
   <body>
     <div id="app">
       <h1>To Do List</h1>
+      <!--  <p v-for="num in testFunction()">{{num}}</p> -->
+      <select v-model="status">
+        <option value="showAll">모두보기</option>
+        <option value="showCompleted">완료된 것만 보기</option>
+        <option value="showIncomplete">미완료된 것만 보기</option>
+      </select>
       <span v-bind:title="message">타이틀 변경</span>
       <input
         type="text"
@@ -21,22 +27,36 @@
       /><button v-on:click="createTodo">추가</button>
       <ul>
         <!-- <li v-for="todo in todos" v-if="!todo.isCompleted"> -->
-        <li v-bind:class="{completed : todo.isCompleted}" v-for="todo in todos">
+        <li
+          v-bind:class="{completed : todo.isCompleted}"
+          v-for="todo in todoByStatus()"
+        >
           <input v-model="todo.isCompleted" type="checkbox" />
           {{todo.content}}
         </li>
         <!-- <li v-else="todo.isCompleted">완료</li> -->
       </ul>
-
+      <button>미 완료된 것만 보기</button>
       <button v-on:click="deleteTodo">완료된 할일 지우기</button>
+
+      <h1>Computed와 Method 비교</h1>
+      <div v-if="visible">
+        <p>computed:{{computedDate}}</p>
+        <p>method:{{methodDate()}}</p>
+      </div>
+
+      <button v-on:click="visible= !visible">Reload</button>
+      <!-- 함수 뿐만 아니라 표현식도 들어갈수 있다. -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
-      new Vue({
+      const app = new Vue({
         el: "#app",
         data: {
+          visible: true,
           message: "이 페이지는 " + new Date() + " 에 로드 되었습니다",
           name: "john",
+          status: "showAll", //showcompleted, showIncompleted
           newInput: "",
           todos: [
             { content: "Vue JS 복습", isCompleted: true },
@@ -46,7 +66,18 @@
             { content: "Vue JS  라라라4", isCompleted: false },
           ],
         },
+
+        computed: {
+          computedDate() {
+            return new Date();
+          },
+        },
+
         methods: {
+          methodDate() {
+            return new Date();
+          },
+
           createTodo() {
             if (this.newInput == "") {
               alert("할일을 입력 해주세요.✅");
@@ -65,6 +96,25 @@
             // filter는 무언가 => 함수(콜백)
             this.todos = this.todos.filter((todo) => !todo.isCompleted);
           },
+
+          todoByStatus() {
+            // status = 'showCompleted'
+            if (this.status === "showCompleted") {
+              return this.todos.filter((todo) => todo.isCompleted);
+            }
+
+            //애는 status가 status='showIncomplete'인 경우
+            if (this.status === "showIncomplete") {
+              return this.todos.filter((todo) => !todo.isCompleted);
+            }
+
+            // status= 'showAll'
+
+            return this.todos;
+          },
+          /* testFunction() {
+            return [1, 2, 3];
+          }, */
         },
       });
     </script>
