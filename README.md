@@ -190,7 +190,7 @@
 
 ## Array Heloper Method 정리
 
-### forEach
+### 1.forEach
 
 - 배열 요소를 돌아가면서 한번씩 콜백함수를 실행한다.
 
@@ -208,7 +208,7 @@ numbers.forEach(myFunction);
 // 값: 5, 인덱스: 4
 ```
 
-### map
+### 2.map
 
 - 콜백함수에 의해 만들어진 새로운 배열을 반환한다.
 
@@ -222,7 +222,7 @@ var array = numbers.map(myFunction);
 console.log(array);
 ```
 
-### filter
+### 3.filter
 
 - 콜백함수의 조건에 의해 만들어진 새로운 배열을 반환한다.
 
@@ -236,7 +236,7 @@ var array = numbers.filter(myFunction);
 console.log(array); // [4, 5]
 ```
 
-### find
+### 4.find
 
 - 배열에서 조건을 만족하는 첫 번째 요소를 반환한다.
 
@@ -250,7 +250,7 @@ var num = numbers.find(myFunction);
 console.log(num); // 4
 ```
 
-### every
+### 5.every
 
 - 각 요소가 모두 조건을 만족하면 true, 그렇지 않으면 false를 반환한다.
 
@@ -264,7 +264,7 @@ var bool = numbers.every(myFunction);
 console.log(bool); // false
 ```
 
-### some
+### 6.some
 
 - 하나의 요소라도 조건을 만족하면 true, 그렇지 않으면 false를 반환한다.
 
@@ -278,7 +278,7 @@ var bool = numbers.every(myFunction);
 console.log(bool); // true
 ```
 
-### reduce
+### 7.reduce
 
 - 각 요소에 대해 콜백함수를 실행한다.
 
