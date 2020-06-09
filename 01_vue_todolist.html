@@ -1,59 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue Todo List</title>
     <style>
-        .completed{
-            text-decoration: line-through;    
-        }
+      .completed {
+        text-decoration: line-through;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div id="app">
-        <h1>To Do List</h1>
-        <span v-bind:title="message">타이틀 변경</span>
-        <input type="text" v-model="newInput" v-on:keypress.enter="createTodo"><button v-on:click="createTodo">추가</button>
-        <ul>
-            <!-- <li v-for="todo in todos" v-if="!todo.isCompleted"> -->
-            <li v-bind:class="{completed : todo.isCompleted}" v-for="todo in todos">
-            <input v-model="todo.isCompleted" type="checkbox"/>
-                {{todo.content}}
-            </li>
-            <!-- <li v-else="todo.isCompleted">완료</li> -->
-        </ul>
+      <h1>To Do List</h1>
+      <span v-bind:title="message">타이틀 변경</span>
+      <input
+        type="text"
+        v-model="newInput"
+        v-on:keypress.enter="createTodo"
+      /><button v-on:click="createTodo">추가</button>
+      <ul>
+        <!-- <li v-for="todo in todos" v-if="!todo.isCompleted"> -->
+        <li v-bind:class="{completed : todo.isCompleted}" v-for="todo in todos">
+          <input v-model="todo.isCompleted" type="checkbox" />
+          {{todo.content}}
+        </li>
+        <!-- <li v-else="todo.isCompleted">완료</li> -->
+      </ul>
+
+      <button v-on:click="deleteTodo">완료된 할일 지우기</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
-        new Vue({
-            el: "#app",
-            data:{
-                message: '이 페이지는 ' + new Date() + ' 에 로드 되었습니다',
-                name: 'john',
-                newInput: '',
-                todos: [
-                    {content: 'Vue JS 복습', isCompleted: true},
-                    {content: 'Vue JS 복습2', isCompleted: false},
-                    {content: 'Vue JS 복습3', isCompleted: false},
-                    {content: 'Vue JS 복습4', isCompleted: false},
-                    {content: 'Vue JS 복습5', isCompleted: false},
-                ]
-            },
-            methods:{
-                createTodo(){
-                    if(this.newInput == ''){
-                        alert('할일을 입력 해주세요.');
-                        return;
-                    }
-                    this.todos.push({
-                        content: this.newInput,
-                        isCompleted: false,
-                    })
-                    this.newInput = ''
-                }
+      new Vue({
+        el: "#app",
+        data: {
+          message: "이 페이지는 " + new Date() + " 에 로드 되었습니다",
+          name: "john",
+          newInput: "",
+          todos: [
+            { content: "Vue JS 복습", isCompleted: true },
+            { content: "Vue JS  라라라1", isCompleted: false },
+            { content: "Vue JS  라라라2", isCompleted: false },
+            { content: "Vue JS  라라라3", isCompleted: false },
+            { content: "Vue JS  라라라4", isCompleted: false },
+          ],
+        },
+        methods: {
+          createTodo() {
+            if (this.newInput == "") {
+              alert("할일을 입력 해주세요.✅");
+              return;
+              this.newInput = "";
+            } else {
+              this.todos.push({
+                content: this.newInput,
+                isCompleted: false,
+              });
             }
-        })
+          },
+
+          deleteTodo() {
+            //helper method : forEach, map, reduce, some,... 배열을 한번씩 순회하며, 무언가를 하는 것
+            // filter는 무언가 => 함수(콜백)
+            this.todos = this.todos.filter((todo) => !todo.isCompleted);
+          },
+        },
+      });
     </script>
-</body>
+  </body>
 </html>

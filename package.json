@@ -1,0 +1,20 @@
+{
+  "name": "vuejs",
+  "version": "1.0.0",
+  "description": "- - # VueJS",
+  "main": "99_array_helper_method.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freeland120/VueJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/freeland120/VueJS/issues"
+  },
+  "homepage": "https://github.com/freeland120/VueJS#readme"
+}
