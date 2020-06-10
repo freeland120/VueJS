@@ -315,7 +315,7 @@ console.log(sum); // 15
 - `computed: {}` : 함수화된 데이터
 - `watch : {}` : 데이터 변경에 대한 콜백
 
-### 라이프사이클 훅
+### 3.라이프사이클 훅
 
 - `created()` : 객체 생성 직후
 - `beforeMount()`
