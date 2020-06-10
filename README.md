@@ -291,3 +291,25 @@ var numbers = [1, 2, 3, 4, 5];
 var sum = numbers.reduce(myFunction);
 console.log(sum); // 15
 ```
+
+## II. Vue JS의 요소
+
+### 1. Directive(지시자)
+
+- `v-for` : 배열과 같은 데이터를 순회
+- `v-if` : 조건부 렌더링
+- `v-else` : 조건부 렌더링
+- `v-model` : 양방향 데이터 바인딩
+- `v-on` : 이벤트 설정(`addEventListener()`)
+  (`@`)
+- `v-bind` : 속성값 설정(`:`)
+- `v-text` : 데이터 렌더(innerText) == `{{}}`
+- `v-html` : 데이터 렌더(innerHTML)
+
+### 2. Vue Instance(객체)
+
+- `new Vue({})`
+- `el : '#app'` : 마운트 포인트
+- `data : {}` : 관리할 데이터
+- `methods: {}` : 함수
+- `computed: {}` : 함수화된 데이터

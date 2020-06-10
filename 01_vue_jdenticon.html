@@ -9,15 +9,32 @@
     <div>
       <h1>✅YDG_Identicon 생성기~✅</h1>
       <div id="app">
+        <b>크기선택</b>
+        <select v-model="Size">
+          <option value="80">소</option>
+          <option value="150">중</option>
+          <option value="300">대</option>
+        </select>
+      
+
         <div id="input_output">
-          <div>
-            아무거나 입력해보세요: <input v-model="AnythingInput" type="text" />
+          <div></br>
+            <b>아무거나 입력해보세요:</b>
+            <input v-model="AnythingInput" type="text" />
           </div>
           <div>
             <b>결과값</b>
-            <div v-html="Identicon27"></div>
+            <svg v-bind:width="Size" v-bind:height="Size" v-bind:data-jdenticon-value="AnythingInput"></svg>
+            
           </div>
         </div>
+
+        jdenticon method를 활용한 svg 생성 : 
+        <!-- <div v-html="identicon()">
+
+        </div>
+       <!--  {{identicon()}} --> -->
+
       </div>
     </div>
 
@@ -28,10 +45,24 @@
         el: "#app",
         data: {
           AnythingInput: "",
+          Size:""
         },
+
+        method:{
+          identicon(){
+            return jedenticon.toSvg(this.AnythingInput,80);
+          },
+
+          reload(){
+
+          }
+
+        },
+
+
         computed: {
           Identicon27() {
-            return jdenticon.toSvg(this.AnythingInput, 500);
+            return jdenticon.toSvg(this.AnythingInput, 200);
           },
         },
       });
