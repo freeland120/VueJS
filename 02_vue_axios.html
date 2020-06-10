@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <button @click="getPosts">Get Posts!</button>
+      <ul>
+        <li v-for="post in posts">
+          <strong>{{post.title}}</strong> - {{post.body}}
+        </li>
+      </ul>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          posts: [],
+        },
+        methods: {
+          getPosts() {
+            // axios로 jsonplaceholder 사이트로 요청을 보내어 데이터를 받아옴, axios cdn 가져오기
+            const URL = "https://jsonplaceholder.typicode.com/posts";
+            axios.get(URL).then((response) => {
+              this.posts = response.data;
+            });
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
