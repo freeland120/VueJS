@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Computed vs Method 비교</h1>
+    <div v-if="visible">
+      <p>computed: {{ computedDate }}</p>
+      <p>method: {{ methodDate() }}</p>
+    </div>
+    <button v-on:click="visible = !visible">리로드</button>
+
+    <script>
+      // computedDate() {
+      //   return new Date()
+      // },
+
+      // methodDate() {
+      //   return new Date()
+      // },
+    </script>
+  </body>
+</html>

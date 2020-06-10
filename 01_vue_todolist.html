@@ -28,6 +28,7 @@
       <ul>
         <!-- <li v-for="todo in todos" v-if="!todo.isCompleted"> -->
         <li
+          v-bind:key="todo.id"
           v-bind:class="{completed : todo.isCompleted}"
           v-for="todo in todoByStatus()"
         >
@@ -59,11 +60,11 @@
           status: "showAll", //showcompleted, showIncompleted
           newInput: "",
           todos: [
-            { content: "Vue JS 복습", isCompleted: true },
-            { content: "Vue JS  라라라1", isCompleted: false },
-            { content: "Vue JS  라라라2", isCompleted: false },
-            { content: "Vue JS  라라라3", isCompleted: false },
-            { content: "Vue JS  라라라4", isCompleted: false },
+            { id: 1, content: "Vue JS 복습", isCompleted: true },
+            { id: 2, content: "Vue JS  라라라1", isCompleted: false },
+            { id: 3, content: "Vue JS  라라라2", isCompleted: false },
+            { id: 4, content: "Vue JS  라라라3", isCompleted: false },
+            { id: 5, content: "Vue JS  라라라4", isCompleted: false },
           ],
         },
 
@@ -85,6 +86,7 @@
               this.newInput = "";
             } else {
               this.todos.push({
+                id: new Date(),
                 content: this.newInput,
                 isCompleted: false,
               });
