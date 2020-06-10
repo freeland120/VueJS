@@ -39,6 +39,9 @@
         save(todos) {
           localStorage.setItem("todos", JSON.stringify(todos));
         },
+        fetch() {
+          return JSON.parse(localStorage.getItem("todos"));
+        },
 
         //조회(Read)
       };
@@ -97,6 +100,10 @@
               console.log("덕경아 데이터 변경됬어!✅");
             },
           },
+        },
+
+        created() {
+          this.todos = todoStorage.fetch();
         },
       });
     </script>
